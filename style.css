@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'stacked';
+    src: url('assets/stacked-pixel.ttf');
+}
+
+button {
+    color: greenyellow;
+    font-family: stacked;
+    font-size: 100px;
+    background-color: transparent;
+    border: 1px solid greenyellow;
+}

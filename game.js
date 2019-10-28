@@ -26,7 +26,7 @@ class Game {
     draw() {
       this.background.draw();
       this.player.draw();
-      this.display.draw();
+      this.display.scoreDraw();
 
       if (frameCount > 50 && frameCount % 120 == 0) {
           console.log("create new obstacle");
@@ -45,6 +45,8 @@ class Game {
           */
           if (this.isCollision(rocket, this.player)) {
             console.log("GAME OVER");
+            this.display.gameOverDraw();
+            this.display.newGame();
             noLoop();
           }
         } //   .bind(this)
@@ -53,11 +55,11 @@ class Game {
 
     isCollision(rocket, player) {
       //x-axis collisions
-      if (player.x + player.width < rocket.x || rocket.x + rocket.width < player.x) {
+      if (player.x + player.width < obstacleBuffer * rocket.x || rocket.x + rocket.width < obstacleBuffer * player.x) {
         return false;
       }
       //y-axis collisions
-      if (player.y > rocket.y + rocket.height || rocket.y > player.y + player.height) {
+      if (obstacleBuffer * player.y > rocket.y + rocket.height || obstacleBuffer * rocket.y > player.y + player.height) {
         return false;
       }
       return true;

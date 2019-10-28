@@ -1,4 +1,5 @@
 let font;
+let button;
 
 function preload() {
     console.log("preload");
