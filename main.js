@@ -1,4 +1,4 @@
-
+let font;
 
 function preload() {
     console.log("preload");

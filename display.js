@@ -6,8 +6,14 @@ class Display {
     }
 
     draw() {
-        textSize(32);
-        text(parseInt(frameCount/60 * 10) , 10, 30);
+        textSize(60);
+        text(parseInt(frameCount/60 * 10) , 10, 50);
+        textFont(font);
+        fill("red");
+    }
+
+    preload() {
+        font = loadFont("assets/stacked-pixel.ttf");
     }
 
 }

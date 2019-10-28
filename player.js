@@ -14,29 +14,37 @@ class Player {
 
     setup() {
         this.y = HEIGHT - 320;
+        this.width = this.img1.width / 8;
+        this.height = this.img1.height / 8;
     }
 
     draw() {
         this.move();
-        
+
         //animate Sally
         if (frameCount % 60 < 10) {
-            image(this.img1, this.x, this.y, 120, 120);
+            rect(this.x, this.y, this.width, this.height);
+            image(this.img1, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 20 && frameCount % 60 > 9) {
-            image(this.img2, this.x, this.y, 120, 120);
+            rect(this.x, this.y, this.width, this.height);
+            image(this.img2, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 30 && frameCount % 60 > 19) {
-            image(this.img1, this.x, this.y, 120, 120);
+            rect(this.x, this.y, this.width, this.height);
+            image(this.img1, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 40 && frameCount % 60 > 29) {
-            image(this.img2, this.x, this.y, 120, 120);
+            rect(this.x, this.y, this.width, this.height);
+            image(this.img2, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 50 && frameCount % 60 > 39) {
-            image(this.img1, this.x, this.y, 120, 120);
+            rect(this.x, this.y, this.width, this.height);
+            image(this.img1, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 60 && frameCount % 60 > 49) {
-            image(this.img2, this.x, this.y, 120, 120);
+            rect(this.x, this.y, this.width, this.height);
+            image(this.img2, this.x, this.y, this.width, this.height);
         }
     }
 
