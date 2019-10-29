@@ -20,14 +20,12 @@ let obstacles = {
     buffer: 1.1
 };
 
+//background
 let background = {
     skySpeed: 1,
     cloud1Speed: 2
 }
 
-//moving background
-let skySpeed = 1;
-let cloud1Speed = 2;
 
 /*rocket stats
 let rocketY = 3;
@@ -52,5 +50,6 @@ let difficultyFactor = 1.1;
 
 //collectible stats
 let collectibleFrequency = 400;
-let collectibleSpeed = cloud1Speed;
-
+let collectibleSpeed = background.cloud1Speed;
+const slowTimeInterval = 5000;
+let bonusFactor = 0.5;

@@ -1,5 +1,7 @@
 let font;
 let button;
+let isSlowTime;
+let displayText;
 
 function preload() {
     console.log("preload");

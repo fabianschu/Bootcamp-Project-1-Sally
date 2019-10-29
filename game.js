@@ -83,14 +83,7 @@ class Game {
       //rising difficulty over time
       if (frameCount % difficultyTime === 0) {
         console.log('speed')
-        let xAxisObstacles = obstacles.speed.xAxis
-        for (let xSpeed in xAxisObstacles){
-          xAxisObstacles[xSpeed] *=  difficultyFactor;
-        } 
-        let xAxisBackground = background
-        for (let xSpeed in xAxisBackground){
-          xAxisBackground[xSpeed] *=  difficultyFactor;
-        } 
+        fastTime(); 
       }
 
       //collectible creation
@@ -109,6 +102,11 @@ class Game {
           }
         } //   .bind(this)
       );
+      
+      //display counter if bonus effect applies
+      if (isSlowTime === true) {
+        this.display.slowTimeCounter();
+      }
       
     }
     isCollision(rocket, player) {

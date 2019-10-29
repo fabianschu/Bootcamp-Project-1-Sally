@@ -14,6 +14,13 @@ class Display {
         textFont(font);
     }
 
+    slowTimeCounter() {
+        fill("red");
+        textSize(40);
+        text("Slow motion: " + displayText , width - 300, 50);
+        textFont(font);
+    }
+
     newGame() {
         button = createButton('New Game');
         button.position(WIDTH/2 - 190, HEIGHT/2 + 100);
