@@ -11,27 +11,29 @@ function fastTime() {
 
 function slowTime() {
     isSlowTime = true;
-    timerDisplay(slowTimeInterval);
+
+    timerDisplay(collectibles.duration.slowTimeDuration);
+
     let xAxisObstacles = obstacles.speed.xAxis
     for (let xSpeed in xAxisObstacles){
-      xAxisObstacles[xSpeed] *=  bonusFactor;
+      xAxisObstacles[xSpeed] *=  collectibles.factor.slowTimeFactor;
     }
 
     let yAxisObstacles = obstacles.speed.yAxis
     for (let ySpeed in yAxisObstacles){
-      yAxisObstacles[ySpeed] *=  bonusFactor;
+      yAxisObstacles[ySpeed] *=  collectibles.factor.slowTimeFactor;
     }
 
     const intervalId = setInterval(function() {
         for (let xSpeed in xAxisObstacles){
-            xAxisObstacles[xSpeed] /=  bonusFactor;
+            xAxisObstacles[xSpeed] /=  collectibles.factor.slowTimeFactor;
         };
         for (let ySpeed in yAxisObstacles){
-            yAxisObstacles[ySpeed] /=  bonusFactor;
+            yAxisObstacles[ySpeed] /=  collectibles.factor.slowTimeFactor;
         };
         isSlowTime = false;
         clearInterval(intervalId);
-    }, slowTimeInterval);
+    }, collectibles.duration.slowTimeDuration);
 }
 
 function timerDisplay(interval) {
@@ -45,3 +47,22 @@ function timerDisplay(interval) {
     }, 1000);
 }
 
+//TODO
+function increaseVelocity() {
+    isSpeedBoost = true;
+    timerDisplay(collectibles.duration.speedBoosterDuration);
+
+    let xAxisSpeedBooster = obstacles.speed.xAxis
+    for (let xSpeed in xAxisSpeedBooster){
+        xAxisSpeedBooster[xSpeed] *=  collectibles.factor.speedBoosterFactor;
+    }
+
+    const intervalId = setInterval(function() {
+        for (let xSpeed in xAxisSpeedBooster){
+            xAxisSpeedBooster[xSpeed] /=  collectibles.factor.speedBoosterFactor;
+        };
+        isSpeedBoost = false;
+        clearInterval(intervalId);
+    }, collectibles.duration.speedBoosterDuration);
+
+}

@@ -14,8 +14,8 @@ class Player {
 
     setup() {
         this.y = HEIGHT - 320;
-        this.width = this.img1.width / 8;
-        this.height = this.img1.height / 8;
+        this.width = this.img1.width / 9;
+        this.height = this.img1.height / 9;
     }
 
     draw() {

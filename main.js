@@ -1,6 +1,7 @@
 let font;
 let button;
 let isSlowTime;
+let isSpeedBoost;
 let displayText;
 
 function preload() {

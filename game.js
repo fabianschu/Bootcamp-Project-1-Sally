@@ -3,6 +3,7 @@ class Game {
         console.log("game constructor");
         // background
         this.background = new Background();
+
         // player
         this.player = new Player();
         //display
@@ -11,8 +12,10 @@ class Game {
         this.rockets = [];
         //ufos
         this.ufos = [];
-        //
-        this.collectibles = [];
+        //slow motion collectible
+        this.slowMotions = [];
+        //speed booster collectible
+        this.speedBoosters = [];
     }
 
     preload() {
@@ -28,6 +31,7 @@ class Game {
     }
 
     draw() {
+      
       this.background.draw();
       this.player.draw();
       this.display.scoreDraw();
@@ -79,26 +83,20 @@ class Game {
           }
         } //   .bind(this)
       );
-      
-      //rising difficulty over time
-      if (frameCount % difficultyTime === 0) {
-        console.log('speed')
-        fastTime(); 
-      }
 
-      //collectible creation
-      if (frameCount > 50 && frameCount % collectibleFrequency == 0) {
+      //collectible 1 creation || SLOW TIME
+      if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
         //push new obstacle to array
-        this.collectibles.push(new Collectible());
+        this.slowMotions.push(new SlowMotion());
       }
 
-      //make sure that collectible is removed, once collected
-      this.collectibles.forEach(
+      //make sure that collectible 1 is removed and effect kicks in, once collected
+      this.slowMotions.forEach(
         (collectible, index) => {
           collectible.draw();
           if (this.isCollision(collectible, this.player)) {
             slowTime();
-            this.collectibles.splice(index, 1);
+            this.slowMotions.splice(index, 1);
           }
         } //   .bind(this)
       );
@@ -107,7 +105,30 @@ class Game {
       if (isSlowTime === true) {
         this.display.slowTimeCounter();
       }
+
+      //collectible 2 || speed booster
+      if (frameCount > 50 && frameCount % collectibles.frequency.speedBoosterFrequency == 0) {
+        //push new obstacle to array
+        this.speedBoosters.push(new SpeedBooster());
+      }
+
+      //make sure that collectible 2 is removed and effect kicks in, once collected
+      this.speedBoosters.forEach(
+        (speedBooster, index) => {
+          speedBooster.draw();
+          if (this.isCollision(speedBooster, this.player)) {
+            increaseVelocity()
+            console.log('VELOCIIIITY');
+            this.speedBoosters.splice(index, 1);
+          }
+        } //   .bind(this)
+      );
       
+      //rising difficulty over time
+      if (frameCount % difficultyTime === 0) {
+        console.log('speed')
+        fastTime(); 
+      }
     }
     isCollision(rocket, player) {
       //x-axis collisions
