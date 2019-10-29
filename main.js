@@ -13,7 +13,6 @@ function setup() {
 } 
 
 function draw() {
-    console.log("draw");
     game.draw();
 }
 
@@ -28,4 +27,4 @@ function draw() {
     }
 }
 */
-const game = new Game();
+let game = new Game();

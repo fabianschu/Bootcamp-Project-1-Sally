@@ -13,7 +13,7 @@ class Background {
         clear();
 
         //background sky
-        this.xSky -= 1;
+        this.xSky -= background.skySpeed;
         image(this.bgSky, this.xSky, 0, WIDTH, HEIGHT);
         image(this.bgSky, this.xSky + width, 0, WIDTH, HEIGHT);
 
@@ -22,13 +22,13 @@ class Background {
         }
 
         //background clouds
-        this.xClouds -= 2;
+        this.xClouds -= background.cloud1Speed;
 
         image(this.bgClouds, this.xClouds, 0, WIDTH, HEIGHT); // width comes from p5
         image(this.bgClouds, this.xClouds + width, 0, WIDTH, HEIGHT);
 
         if (this.xClouds <= -width) {
-        this.xClouds = 0;
+            this.xClouds = 0;
         }
     }
 }

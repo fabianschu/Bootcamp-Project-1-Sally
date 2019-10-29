@@ -23,27 +23,27 @@ class Player {
 
         //animate Sally
         if (frameCount % 60 < 10) {
-            rect(this.x, this.y, this.width, this.height);
+            //rect(this.x, this.y, this.width, this.height);
             image(this.img1, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 20 && frameCount % 60 > 9) {
-            rect(this.x, this.y, this.width, this.height);
+            //rect(this.x, this.y, this.width, this.height);
             image(this.img2, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 30 && frameCount % 60 > 19) {
-            rect(this.x, this.y, this.width, this.height);
+            //rect(this.x, this.y, this.width, this.height);
             image(this.img1, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 40 && frameCount % 60 > 29) {
-            rect(this.x, this.y, this.width, this.height);
+            //rect(this.x, this.y, this.width, this.height);
             image(this.img2, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 50 && frameCount % 60 > 39) {
-            rect(this.x, this.y, this.width, this.height);
+            //rect(this.x, this.y, this.width, this.height);
             image(this.img1, this.x, this.y, this.width, this.height);
         }
         if (frameCount % 60 < 60 && frameCount % 60 > 49) {
-            rect(this.x, this.y, this.width, this.height);
+            //rect(this.x, this.y, this.width, this.height);
             image(this.img2, this.x, this.y, this.width, this.height);
         }
     }
@@ -51,25 +51,21 @@ class Player {
     move() {
         //move up
         if (keyIsDown(38)) {
-            console.log("pressi");
             this.y -= verticalSpeed;
         }
 
         //move down
         if (keyIsDown(40)) {
-            console.log("pressi");
             this.y += verticalSpeed;
         }
 
         //move left
         if (keyIsDown(37)) {
-            console.log("pressi");
             this.x -= horizontalSpeed;
         }
 
         //move right
         if (keyIsDown(39)) {
-            console.log("pressi");
             this.x += horizontalSpeed;
         }
 

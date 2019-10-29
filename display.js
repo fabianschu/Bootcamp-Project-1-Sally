@@ -1,7 +1,7 @@
 class Display {
 
     scoreDraw() {
-        fill("green");
+        fill("greenyellow");
         textSize(60);
         text(parseInt(frameCount/60 * 10) , 10, 50);
         textFont(font);
