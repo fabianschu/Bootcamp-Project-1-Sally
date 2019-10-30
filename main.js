@@ -1,3 +1,4 @@
+var mode;
 let font;
 let button;
 let isSlowTime;
@@ -13,13 +14,18 @@ function preload() {
 }
 
 function setup() {
+    //mode = 0;
     console.log("setup");
-    createCanvas(WIDTH, HEIGHT);
+    var canvas = createCanvas(WIDTH, HEIGHT);
+    canvas.parent('canvas-div');
     game.setup();
 } 
 
 function draw() {
+    //if (move == 0) {
     game.draw();
+    //}
 }
 
 let game = new Game();
+displayPreviousScore();

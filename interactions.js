@@ -22,22 +22,45 @@ function saveScore() {
         console.log(previousScores);
         localStorage.setItem("score", JSON.stringify(previousScores));
     }
+}
 
-    
-    /*let score = frameCount/6 * 10
-    console.log(scoreArray);
-    console.log(scoreArray.length);
+let lastScore;
+localStorage.setItem("score", lastScore);
 
-    if (scoreArray.length != 0) {
-        let container = JSON.parse(localStorage.getItem("score"));
-        console.log(container);
-        container.push(score);
-        localStorage.setItem("score", JSON.stringify(container));
-        return "storage success"
+function displayPreviousScore() {
+    //get array from storage
+    let scoreArray = JSON.parse(localStorage.getItem("score"));
+
+    //save latest score to highlight it
+    let latestScore = scoreArray[scoreArray.length - 1];
+    //let latestIndex;
+
+    //sort array in descending order and only keep the ten highest values
+    scoreArray.sort(function(a,b) {
+        return b - a;
+    });
+    scoreArray = scoreArray.slice(0, 10);
+
+    /*
+    //check if topscores contain latest score and save index
+    if (scoreArray.includes(latestScore)) {
+        latestIndex = scoreArray.indexOf(scoreArray);
     }
-
-    scoreArray.push(score);
-    console.log(scoreArray);
-    localStorage.setItem("score", JSON.stringify(scoreArray));
     */
+
+    //iterate over array and for each value create a list element
+    
+    scoreArray.forEach(element => {
+        let scoresList = document.getElementById("scores-list");
+        let listElement = document.createElement('li');
+        listElement.innerHTML = element;
+        scoresList.appendChild(listElement);
+        if (element == latestScore) {
+            console.log(element);
+            console.log(latestScore);
+            listElement.setAttribute('class', 'latest-score');
+        }
+    });
+
+    console.log(scoreArray);
 }

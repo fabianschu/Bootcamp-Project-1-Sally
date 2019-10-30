@@ -1,6 +1,6 @@
 //canvas
-const WIDTH = 1200;
-const HEIGHT = 840;
+const WIDTH = 900;
+const HEIGHT = 640;
 
 let player = {
     height: 100,
@@ -33,8 +33,8 @@ let obstacles = {
         }
     },
     frequency: {
-        rocketFrequency: 600,
-        ufoFrequency: 200,
+        rocketFrequency: 100,
+        ufoFrequency: 100,
         anvilFrequency: 300
     },
     buffer: 1.1
@@ -92,7 +92,7 @@ let collectibles = {
     duration: {
         slowTimeDuration: 5000,
         makeSmallDuration: 5000,
-        supersizeObstaclesFrequency: 9000
+        supersizeObstaclesDuration: 9000
     },
     factor: {
         slowTimeFactor: 0.5,

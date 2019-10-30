@@ -94,9 +94,8 @@ function increaseObstacleSize() {
     for (let height in obstacleHeight){
         obstacleHeight[height] /=  collectibles.factor.supersizeObstaclesFactor;
     };
-    isSlowTime = false;
-    clearInterval(intervalId);
-}, collectibles.duration.slowTimeDuration);
+    isObstaclesSupersized = true;
+}, collectibles.duration.supersizeObstaclesDuration);
 
   
 }
