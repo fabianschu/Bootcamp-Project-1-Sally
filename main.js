@@ -3,6 +3,8 @@ let button;
 let isSlowTime;
 let isPlayerSmall;
 let displayText;
+let effect;
+let isObstaclesSupersized;
 
 
 function preload() {
@@ -20,15 +22,4 @@ function draw() {
     game.draw();
 }
 
-/*function keyPressed() {
-    if (keyIsDown(38)) {
-        console.log("pressi");
-        game.player.moveUp();
-    }
-
-    if (keyIsDown(40)) {
-        //move down
-    }
-}
-*/
 let game = new Game();

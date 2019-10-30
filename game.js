@@ -1,20 +1,23 @@
 class Game {
     constructor() {
-        console.log("game constructor");
-        // background
         this.background = new Background();
-        // player
         this.player = new Player();
-        //display
+        //display elements
         this.display = new Display();
-        //rockets
+        
+        //obstacles
         this.rockets = [];
-        //ufos
         this.ufos = [];
-        //slowtime
+        this.anvils = [];
+        
+        //collectibles w positive effects
         this.slowMotions = [];
-        //makesmall
         this.makeSmalls = [];
+        this.removeObstacles = [];
+
+        //collectibles w negative effects
+        this.supersizeObstacles = [];
+
     }
 
     preload() {
@@ -34,6 +37,8 @@ class Game {
       this.player.draw();
       this.display.scoreDraw();
 
+      /* ---------------------------------- Obstacles ---------------------------------- */
+
       //rocket creation
       if (frameCount > 50 && frameCount % obstacles.frequency.rocketFrequency == 0) {
           //push new obstacle to array
@@ -44,14 +49,17 @@ class Game {
         (rocket, index) => {
           rocket.draw();
           
+          
           if (rocket.x + rocket.width <= 0) {
             //   remove obstacle
             this.rockets.splice(index, 1);
           }
           
+          
           if (this.isCollision(rocket, this.player)) {
             this.display.gameOverDraw();
             this.display.newGame();
+            saveScore();
             newGame();
             noLoop();
           }
@@ -76,47 +84,64 @@ class Game {
           if (this.isCollision(ufo, this.player)) {
             this.display.gameOverDraw();
             this.display.newGame();
+            saveScore();
             newGame();
             noLoop();
           }
         } //   .bind(this)
       );
-      
-      //rising difficulty over time
-      if (frameCount % difficultyTime === 0) {
-        console.log('speed')
-        fastTime(); 
+
+      //anvil creation
+      if (frameCount > 50 && frameCount % obstacles.frequency.anvilFrequency == 0) {
+        //push new obstacle to array
+        this.anvils.push(new Anvil());
       }
+
+      this.anvils.forEach((anvil, index) => {
+        anvil.draw(); 
+        if (anvil.x + anvil.width <= 0) {
+          //   remove obstacle
+          this.anvils.splice(index, 1);
+        }
+        
+        if (this.isCollision(anvil, this.player)) {
+          this.display.gameOverDraw();
+          this.display.newGame();
+          saveScore();
+          newGame();
+          noLoop();
+        }
+        });
+
+      /* ---------------------------------- Collectibles ---------------------------------- */
 
       //slowTime creation
+      
       if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
-        //push new collectible to array
-        this.slowMotions.push(new slowMotion());
+        this.slowMotions.push(new SlowMotion());
       }
 
-      //make sure that collectible is removed, and effect kicks in once collected
       this.slowMotions.forEach(
         (slowMotion, index) => {
+          
           slowMotion.draw();
+          
           if (this.isCollision(slowMotion, this.player)) {
-            slowTime();
+            slowTime(); //do something fancy (effects)
             this.slowMotions.splice(index, 1);
           }
-        } //   .bind(this)
+        } 
       );
       
-      //display counter if bonus effect applies
       if (isSlowTime === true) {
-        this.display.slowTimeCounter();
+        this.display.effectCounter();
       }
 
       //makeSmall creation
       if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
-        //push new collectible to array
-        this.makeSmalls.push(new makeSmall());
+        this.makeSmalls.push(new MakeSmall());
       }
 
-      //make sure that collectible is removed, and effect kicks in once collected
       this.makeSmalls.forEach(
         (makeSmall, index) => {
           makeSmall.draw();
@@ -124,15 +149,51 @@ class Game {
             makePlayerSmall();
             this.makeSmalls.splice(index, 1);
           }
-        } //   .bind(this)
+        } 
       );
       
-      //isplay counter if bonus effect applies
       if (isPlayerSmall === true) {
-        this.display.slowTimeCounter();
+        this.display.effectCounter();
+      }
+
+      //removeObstacles creation
+      if (frameCount > 50 && frameCount % collectibles.frequency.removeObstaclesFrequency == 0) {
+        this.removeObstacles.push(new RemoveObstacles());
+      }
+
+      this.removeObstacles.forEach(
+        (removeObstacle, index) => {
+          removeObstacle.draw();
+          if (this.isCollision(removeObstacle, this.player)) {
+            //emoveAllObstacles();
+            this.removeObstacles.splice(index, 1);
+          }
+        }
+      );
+
+      //supersizeObstacles creation
+      if (frameCount > 50 && frameCount % collectibles.frequency.supersizeObstaclesFrequency == 0) {
+        this.supersizeObstacles.push(new SupersizeObstacles());
+      }
+
+      this.supersizeObstacles.forEach(
+        (supersizeObstacle, index) => {
+          supersizeObstacle.draw();
+          if (this.isCollision(supersizeObstacle, this.player)) {
+            increaseObstacleSize();
+            this.supersizeObstacles.splice(index, 1);
+          }
+        }
+      );
+      
+      /* ---------------------------------- Increase Difficulty ---------------------------------- */
+      if (frameCount % difficultyTime === 0) {
+        console.log('speed')
+        fastTime(); 
       }
       
     }
+
     isCollision(rocket, player) {
       //x-axis collisions
       if (player.x + player.width < obstacles.buffer * rocket.x || rocket.x + rocket.width < obstacles.buffer * player.x) {

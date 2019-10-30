@@ -52,22 +52,30 @@ class Player {
     move() {
         //move up
         if (keyIsDown(38)) {
+            if (this.y > 0) {
             this.y -= verticalSpeed;
+            }
         }
 
         //move down
         if (keyIsDown(40)) {
+            if (this.y < HEIGHT - this.height) {
             this.y += verticalSpeed;
+            }
         }
 
         //move left
         if (keyIsDown(37)) {
+            if (this.x > 0) {
             this.x -= horizontalSpeed;
+            }
         }
 
         //move right
         if (keyIsDown(39)) {
+            if (this.x < WIDTH - this.width) {
             this.x += horizontalSpeed;
+            }
         }
 
     }

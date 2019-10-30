@@ -3,6 +3,20 @@
     src: url('assets/stacked-pixel.ttf');
 }
 
+html, body {
+ height: 100%;
+}
+
+body {
+ margin: 0;
+ display: flex;
+ flex-direction: column;
+ /* This centers our sketch horizontally. */
+ justify-content: space-around;
+ /* This centers our sketch vertically. */
+ align-items: center;
+}
+
 button {
     color: greenyellow;
     font-family: stacked;

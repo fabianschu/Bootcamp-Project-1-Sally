@@ -3,7 +3,7 @@ class Display {
     scoreDraw() {
         fill("greenyellow");
         textSize(60);
-        text(parseInt(frameCount/60 * 10) , 10, 50);
+        text(parseInt(frameCount * 100) , 10, 50);
         textFont(font);
     }
 
@@ -14,11 +14,13 @@ class Display {
         textFont(font);
     }
 
-    slowTimeCounter() {
-        fill("red");
+    effectCounter() {
+        push();
+        fill("green");
         textSize(40);
-        text(effect + ": " + displayText , width - 300, 50);
+        text(effect + ": " + displayText , 350, 50);
         textFont(font);
+        pop();
     }
 
     newGame() {
