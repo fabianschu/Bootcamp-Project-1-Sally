@@ -28,4 +28,4 @@ function draw() {
 }
 
 let game = new Game();
-displayPreviousScore();
+displayPreviousScore()
