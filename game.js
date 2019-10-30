@@ -60,7 +60,7 @@ class Game {
             this.display.gameOverDraw();
             this.display.newGame();
             saveScore();
-            newGame();
+            startNewGame();
             noLoop();
           }
         } //   .bind(this)
@@ -85,7 +85,7 @@ class Game {
             this.display.gameOverDraw();
             this.display.newGame();
             saveScore();
-            newGame();
+            startNewGame();
             noLoop();
           }
         } //   .bind(this)
@@ -108,7 +108,7 @@ class Game {
           this.display.gameOverDraw();
           this.display.newGame();
           saveScore();
-          newGame();
+          startNewGame();
           noLoop();
         }
         });

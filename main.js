@@ -1,4 +1,4 @@
-var mode;
+//var mode;
 let font;
 let button;
 let isSlowTime;
@@ -14,7 +14,7 @@ function preload() {
 }
 
 function setup() {
-    //mode = 0;
+    //mode = 0;           //here
     console.log("setup");
     var canvas = createCanvas(WIDTH, HEIGHT);
     canvas.parent('canvas-div');
@@ -22,9 +22,7 @@ function setup() {
 } 
 
 function draw() {
-    //if (move == 0) {
     game.draw();
-    //}
 }
 
 let game = new Game();

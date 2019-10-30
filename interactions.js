@@ -1,5 +1,5 @@
 //new game
-function newGame() {
+function startNewGame() {
   document.getElementsByTagName("button")[0].onclick = function() {
     console.log("reload");
     location.reload();
@@ -69,4 +69,9 @@ function displayPreviousScore() {
   });
 
   console.log(scoreArray);
+}
+
+function newGame() {
+    button = createButton('New Game');
+    button.position(WIDTH/2 - 190, HEIGHT/2 + 100);
 }

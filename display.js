@@ -23,11 +23,12 @@ class Display {
         pop();
     }
 
+    
     newGame() {
         button = createButton('New Game');
         button.position(WIDTH/2 - 190, HEIGHT/2 + 100);
     }
-
+    
     preload() {
         font = loadFont("assets/stacked-pixel.ttf");
     }
