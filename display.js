@@ -17,7 +17,7 @@ class Display {
     slowTimeCounter() {
         fill("red");
         textSize(40);
-        text("Slow motion: " + displayText , width - 300, 50);
+        text(effect + ": " + displayText , width - 300, 50);
         textFont(font);
     }
 

@@ -11,8 +11,10 @@ class Game {
         this.rockets = [];
         //ufos
         this.ufos = [];
-        //
-        this.collectibles = [];
+        //slowtime
+        this.slowMotions = [];
+        //makesmall
+        this.makeSmalls = [];
     }
 
     preload() {
@@ -86,25 +88,47 @@ class Game {
         fastTime(); 
       }
 
-      //collectible creation
-      if (frameCount > 50 && frameCount % collectibleFrequency == 0) {
-        //push new obstacle to array
-        this.collectibles.push(new Collectible());
+      //slowTime creation
+      if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
+        //push new collectible to array
+        this.slowMotions.push(new slowMotion());
       }
 
-      //make sure that collectible is removed, once collected
-      this.collectibles.forEach(
-        (collectible, index) => {
-          collectible.draw();
-          if (this.isCollision(collectible, this.player)) {
+      //make sure that collectible is removed, and effect kicks in once collected
+      this.slowMotions.forEach(
+        (slowMotion, index) => {
+          slowMotion.draw();
+          if (this.isCollision(slowMotion, this.player)) {
             slowTime();
-            this.collectibles.splice(index, 1);
+            this.slowMotions.splice(index, 1);
           }
         } //   .bind(this)
       );
       
       //display counter if bonus effect applies
       if (isSlowTime === true) {
+        this.display.slowTimeCounter();
+      }
+
+      //makeSmall creation
+      if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
+        //push new collectible to array
+        this.makeSmalls.push(new makeSmall());
+      }
+
+      //make sure that collectible is removed, and effect kicks in once collected
+      this.makeSmalls.forEach(
+        (makeSmall, index) => {
+          makeSmall.draw();
+          if (this.isCollision(makeSmall, this.player)) {
+            makePlayerSmall();
+            this.makeSmalls.splice(index, 1);
+          }
+        } //   .bind(this)
+      );
+      
+      //isplay counter if bonus effect applies
+      if (isPlayerSmall === true) {
         this.display.slowTimeCounter();
       }
       

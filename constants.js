@@ -1,6 +1,11 @@
 //canvas
-const WIDTH = 1400;//900;
-const HEIGHT = 700;//540;
+const WIDTH = 900;
+const HEIGHT = 540;
+
+let player = {
+    height: 100,
+    width: 130
+}
 
 //obstacles
 let obstacles = {
@@ -14,8 +19,8 @@ let obstacles = {
         }
     },
     frequency: {
-        rocketFrequency: 120,
-        ufoFrequency: 400
+        rocketFrequency: 600,
+        ufoFrequency: 200
     },
     buffer: 1.1
 };
@@ -48,8 +53,27 @@ let obstacleBuffer = 1.1;
 let difficultyTime = 200;
 let difficultyFactor = 1.1;
 
-//collectible stats
-let collectibleFrequency = 400;
-let collectibleSpeed = background.cloud1Speed;
-const slowTimeInterval = 5000;
-let bonusFactor = 0.5;
+let collectibles = {
+    speed: {
+        xAxis: {
+            slowTimeX: 2,
+            makeSmallX: 2,
+        },
+        yAxis: {
+            slowTimeY: 0,
+            makeSmallY: 0
+        }
+    },
+    frequency: {
+        slowTimeFrequency: 400,
+        makeSmallFrequency: 400
+    },
+    duration: {
+        slowTimeDuration: 5000,
+        makeSmallDuration: 5000
+    },
+    factor: {
+        slowTimeFactor: 0.5,
+        makeSmallFactor: 0.5
+    }
+}

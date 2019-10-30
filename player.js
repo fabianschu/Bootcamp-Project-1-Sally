@@ -14,13 +14,14 @@ class Player {
 
     setup() {
         this.y = HEIGHT - 320;
-        this.width = this.img1.width / 8;
-        this.height = this.img1.height / 8;
     }
 
     draw() {
         this.move();
 
+        this.width = player.width //this.img1.width / 8;
+        this.height = player.height //this.img1.height / 8;
+        
         //animate Sally
         if (frameCount % 60 < 10) {
             //rect(this.x, this.y, this.width, this.height);

@@ -1,7 +1,9 @@
 let font;
 let button;
 let isSlowTime;
+let isPlayerSmall;
 let displayText;
+
 
 function preload() {
     console.log("preload");
