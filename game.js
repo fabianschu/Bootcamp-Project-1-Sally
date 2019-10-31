@@ -2,6 +2,7 @@ class Game {
     constructor() {
         this.background = new Background();
         this.player = new Player();
+        this.sounds = new Sounds();
         //display elements
         this.display = new Display();
         
@@ -24,12 +25,14 @@ class Game {
         // console.log("game preload");
         this.background.preload();
         this.player.preload();
+        this.sounds.preload(); //new
         this.display.preload();
         
     }
 
     setup() {
         this.player.setup();
+        this.sounds.setup(); //new
     }
 
     draw() {
@@ -59,6 +62,7 @@ class Game {
           if (this.isCollision(rocket, this.player)) {
             this.display.gameOverDraw();
             this.display.newGame();
+            this.sounds.killSounds();
             saveScore();
             startNewGame();
             noLoop();
@@ -84,6 +88,7 @@ class Game {
           if (this.isCollision(ufo, this.player)) {
             this.display.gameOverDraw();
             this.display.newGame();
+            this.sounds.killSounds();
             saveScore();
             startNewGame();
             noLoop();
@@ -107,6 +112,7 @@ class Game {
         if (this.isCollision(anvil, this.player)) {
           this.display.gameOverDraw();
           this.display.newGame();
+          this.sounds.killSounds();
           saveScore();
           startNewGame();
           noLoop();
