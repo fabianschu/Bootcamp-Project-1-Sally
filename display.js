@@ -16,9 +16,9 @@ class Display {
 
     effectCounter() {
         push();
-        fill("green");
+        fill(52, 235, 107); 
         textSize(40);
-        text(effect + ": " + displayText , 350, 50);
+        text(effect + ": " + displayText , 320, 50);
         textFont(font);
         pop();
     }

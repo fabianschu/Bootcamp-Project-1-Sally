@@ -180,7 +180,7 @@ class Game {
       /* ---------------------------------- Obstacles ---------------------------------- */
 
       //rocket creation
-      if (frameCount > 50 && frameCount % obstacles.frequency.rocketFrequency == 0) {
+      if (frameCount > 50 && frameCount % Math.round(obstacles.frequency.rocketFrequency) == 0) {
           //push new obstacle to array
           this.rockets.push(new Rocket());
       }
@@ -196,6 +196,7 @@ class Game {
           
           
           if (this.isCollision(rocket, this.player)) {
+            this.sounds.makeWhining();
             this.display.gameOverDraw();
             this.display.newGame();
             this.sounds.killSounds();
@@ -207,7 +208,7 @@ class Game {
       );
 
       //ufo creation
-      if (frameCount > 50 && frameCount % obstacles.frequency.ufoFrequency == 0) {
+      if (frameCount > 50 && frameCount % Math.round(obstacles.frequency.ufoFrequency) == 0) {
         //push new obstacle to array
         this.ufos.push(new Ufo());
       }
@@ -221,6 +222,7 @@ class Game {
           }
           
           if (this.isCollision(ufo, this.player)) {
+            this.sounds.makeWhining();
             this.display.gameOverDraw();
             this.display.newGame();
             this.sounds.killSounds();
@@ -232,7 +234,7 @@ class Game {
       );
 
       //anvil creation
-      if (frameCount > 50 && frameCount % obstacles.frequency.anvilFrequency == 0) {
+      if (frameCount > 50 && frameCount % Math.round(obstacles.frequency.anvilFrequency) == 0) {
         //push new obstacle to array
         this.anvils.push(new Anvil());
       }
@@ -244,6 +246,7 @@ class Game {
         }
         
         if (this.isCollision(anvil, this.player)) {
+          this.sounds.makeWhining();
           this.display.gameOverDraw();
           this.display.newGame();
           this.sounds.killSounds();
@@ -254,7 +257,7 @@ class Game {
         });
 
       /* ---------------------------------- Collectibles ---------------------------------- */
-
+      
       //slowTime creation
       
       if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
@@ -267,6 +270,7 @@ class Game {
           slowMotion.draw();
           
           if (this.isCollision(slowMotion, this.player)) {
+            this.sounds.makeBing();
             slowTime(); //do something fancy (effects)
             this.slowMotions.splice(index, 1);
           }
@@ -286,6 +290,7 @@ class Game {
         (makeSmall, index) => {
           makeSmall.draw();
           if (this.isCollision(makeSmall, this.player)) {
+            this.sounds.makeBing();
             makePlayerSmall();
             this.makeSmalls.splice(index, 1);
           }
@@ -307,12 +312,13 @@ class Game {
         (removeObstacle, index) => {
           removeObstacle.draw();
           if (this.isCollision(removeObstacle, this.player)) {
+            this.sounds.makeBing();
             removeAllObstacles();
             this.removeObstacles.splice(index, 1);
           }
         }
       );
-
+      
       //supersizeObstacles creation 
       
       if (frameCount > 50 && frameCount % collectibles.frequency.supersizeObstaclesFrequency == 0) {
@@ -323,6 +329,7 @@ class Game {
         (supersizeObstacle, index) => {
           supersizeObstacle.draw();
           if (this.isCollision(supersizeObstacle, this.player)) {
+            this.sounds.makeBing();
             increaseObstacleSize();
             this.supersizeObstacles.splice(index, 1);
           }
@@ -332,7 +339,7 @@ class Game {
       /* ---------------------------------- Increase Difficulty ---------------------------------- */
       if (frameCount % difficultyTime === 0) {
         console.log('speed')
-        fastTime(); 
+        increaseDifficulty(); 
       }
       
     }

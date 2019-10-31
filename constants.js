@@ -33,9 +33,9 @@ let obstacles = {
         }
     },
     frequency: {
-        rocketFrequency: 300,
-        ufoFrequency: 200,
-        anvilFrequency: 100
+        rocketFrequency: 400,
+        ufoFrequency: 300,
+        anvilFrequency: 200
     },
     buffer: 1.1
 };
@@ -60,15 +60,15 @@ let difficultyFactor = 1.1;
 let collectibles = {
     speed: {
         xAxis: {
-            slowTimeX: 2,
-            makeSmallX: 2,
+            slowTimeX: 3,
+            makeSmallX: 4,
             removeObstaclesX: 2,
             supersizeObstaclesX: 0
         },
         yAxis: {
             slowTimeY: 0,
             makeSmallY: 0,
-            removeObstaclesY: 3,
+            removeObstaclesY: 4,
             supersizeObstaclesY: 3
         }
     },
@@ -76,7 +76,7 @@ let collectibles = {
         slowTimeFrequency: 1300,
         makeSmallFrequency: 700,
         removeObstaclesFrequency: 300,
-        supersizeObstaclesFrequency: 1700
+        supersizeObstaclesFrequency: 900
     },
     duration: {
         slowTimeDuration: 5000,

@@ -1,4 +1,4 @@
-function fastTime() {
+function increaseDifficulty() {
   let xAxisObstacles = obstacles.speed.xAxis
   for (let xSpeed in xAxisObstacles){
     xAxisObstacles[xSpeed] *=  difficultyFactor;
@@ -10,6 +10,11 @@ function fastTime() {
   let xAxisClouds = clouds.speed
   for (let xSpeed in xAxisClouds){
     xAxisClouds[xSpeed] *=  difficultyFactor;
+  }
+  
+  let obstacleFrequencies = obstacles.frequency
+  for (let frequency in obstacleFrequencies){
+    obstacleFrequencies[frequency] /=  difficultyFactor;
   }
 }
 
@@ -118,7 +123,8 @@ function increaseObstacleSize() {
     for (let height in obstacleHeight){
         obstacleHeight[height] /=  collectibles.factor.supersizeObstaclesFactor;
     };
-    isObstaclesSupersized = true;
+    isObstaclesSupersized = false;
+    clearInterval(intervalId);
 }, collectibles.duration.supersizeObstaclesDuration);
 
   

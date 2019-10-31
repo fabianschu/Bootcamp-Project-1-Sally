@@ -64,7 +64,7 @@ function displayPreviousScore() {
     if (element == latestScore) {
       console.log(element);
       console.log(latestScore);
-      listElement.setAttribute("class", "latest-score");
+      listElement.setAttribute("class", "orange");
     }
   });
 

@@ -48,7 +48,7 @@ class Anvil {
     }
     
     draw() {
-        image(this.img, this.x, this.y, this.width, this.height);
+        image(this.img2, this.x, this.y, this.width, this.height);
         this.y += obstacles.speed.yAxis.rocketY;
         this.x -= obstacles.speed.xAxis.rocketX;
     }   
