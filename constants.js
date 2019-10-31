@@ -11,14 +11,14 @@ let player = {
 let obstacles = {
     size: {
         width: {
-            rocketWidth: 75,
-            ufoWidth: 144,
-            anvilWidth: 75
+            rocketWidth: 80,  
+            ufoWidth: 112, //factor 1.6
+            anvilWidth: 80
         },
         height: {
-            rocketHeight: 150,
-            ufoHeight: 90,
-            anvilHeight: 150
+            rocketHeight: 200, //factor 2.5
+            ufoHeight: 70,
+            anvilHeight: 100 //factor 1.5
         }
     },
     speed: {
@@ -33,8 +33,8 @@ let obstacles = {
         }
     },
     frequency: {
-        rocketFrequency: 1000,
-        ufoFrequency: 100,
+        rocketFrequency: 300,
+        ufoFrequency: 200,
         anvilFrequency: 100
     },
     buffer: 1.1
@@ -51,7 +51,7 @@ let verticalSpeed = 6;
 let horizontalSpeed = 4;
 
 //buffer for obstacles
-let obstacleBuffer = 1.5;
+let obstacleBuffer = 1.7;
 
 //rise difficulty
 let difficultyTime = 200;
@@ -73,15 +73,15 @@ let collectibles = {
         }
     },
     frequency: {
-        slowTimeFrequency: 300,
-        makeSmallFrequency: 400,
+        slowTimeFrequency: 1300,
+        makeSmallFrequency: 700,
         removeObstaclesFrequency: 300,
-        supersizeObstaclesFrequency: 300
+        supersizeObstaclesFrequency: 1700
     },
     duration: {
         slowTimeDuration: 5000,
-        makeSmallDuration: 5000,
-        supersizeObstaclesDuration: 9000
+        makeSmallDuration: 7000,
+        supersizeObstaclesDuration: 5000
     },
     factor: {
         slowTimeFactor: 0.5,

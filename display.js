@@ -1,7 +1,7 @@
 class Display {
 
     scoreDraw() {
-        fill("greenyellow");
+        fill(245, 99, 66);
         textSize(60);
         text(parseInt(frameCount * 100) , 10, 50);
         textFont(font);
@@ -10,7 +10,7 @@ class Display {
     gameOverDraw() {
         fill("red");
         textSize(150);
-        text("GAME OVER" , 100, 150);
+        text("GAME OVER" , 100, 200);
         textFont(font);
     }
 
@@ -23,10 +23,9 @@ class Display {
         pop();
     }
 
-    
     newGame() {
         button = createButton('New Game');
-        button.position(WIDTH/2 - 190, HEIGHT/2 + 100);
+        button.position(430, 550);
     }
     
     preload() {

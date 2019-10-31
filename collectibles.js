@@ -5,10 +5,11 @@ class SlowMotion {
         this.x = width;
         this.height = 50;
         this.width = 50;
+        this.img = loadImage("assets/diamond.png");
     }
 
     draw() {
-        rect(this.x, this.y, this.width, this.height);
+        image(this.img, this.x, this.y, this.width, this.height);
         this.x -= collectibles.speed.xAxis.slowTimeX;
     }
 }
@@ -20,14 +21,12 @@ class MakeSmall {
         this.x = width;
         this.height = 50;
         this.width = 50;
+        this.img = loadImage("assets/diamond.png");
     }
 
     draw() {
-        push();
-        fill("blue");
-        rect(this.x, this.y, this.width, this.height);
+        image(this.img, this.x, this.y, this.width, this.height);
         this.x -= collectibles.speed.xAxis.makeSmallX;
-        pop();
     }
 }
 
@@ -38,14 +37,12 @@ class RemoveObstacles {
         this.x = random(0, width);
         this.height = 50;
         this.width = 50;
+        this.img = loadImage("assets/diamond.png");
     }
 
     draw() {
-        push();
-        fill("black");
-        rect(this.x, this.y, this.width, this.height);
+        image(this.img, this.x, this.y, this.width, this.height);
         this.y += collectibles.speed.yAxis.removeObstaclesY;
-        pop();
     }
 }
 
@@ -56,13 +53,11 @@ class SupersizeObstacles {
         this.x = random(0, width);
         this.height = 50;
         this.width = 50;
+        this.img = loadImage("assets/diamond.png");
     }
 
     draw() {
-        push();
-        fill("brown");
-        rect(this.x, this.y, this.width, this.height);
+        image(this.img, this.x, this.y, this.width, this.height);
         this.y += collectibles.speed.yAxis.removeObstaclesY;
-        pop();
     }
 }

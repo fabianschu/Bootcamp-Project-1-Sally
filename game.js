@@ -278,7 +278,7 @@ class Game {
       }
 
       //makeSmall creation
-      if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
+      if (frameCount > 50 && frameCount % collectibles.frequency.makeSmallFrequency == 0) {
         this.makeSmalls.push(new MakeSmall());
       }
 
@@ -307,7 +307,7 @@ class Game {
         (removeObstacle, index) => {
           removeObstacle.draw();
           if (this.isCollision(removeObstacle, this.player)) {
-            //emoveAllObstacles();
+            removeAllObstacles();
             this.removeObstacles.splice(index, 1);
           }
         }

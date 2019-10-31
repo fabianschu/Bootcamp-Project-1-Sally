@@ -15,7 +15,7 @@ function fastTime() {
 
 function slowTime() {
   isSlowTime = true;
-  timerDisplay(collectibles.duration.slowTimeDuration, 'Slow Motion');
+  timerDisplay(collectibles.duration.slowTimeDuration, 'SLOW MOTION');
   let xAxisObstacles = obstacles.speed.xAxis
   for (let xSpeed in xAxisObstacles){
     xAxisObstacles[xSpeed] *=  collectibles.factor.slowTimeFactor;
@@ -73,11 +73,10 @@ function timerDisplay(interval, input) {
 function makePlayerSmall() {
   isPlayerSmall = true;
 
-  timerDisplay(collectibles.duration.makeSmallDuration, 'Tinify');
+  timerDisplay(collectibles.duration.makeSmallDuration, 'TINY TECKEL TIME');
   
   let playerSize = player;
   for (let size in playerSize){
-    console.log("downsizing");
     playerSize[size] *=  collectibles.factor.makeSmallFactor;
   }
   
@@ -93,6 +92,7 @@ function makePlayerSmall() {
 function removeAllObstacles() {
   game.ufos = [];
   game.rockets = [];
+  game.anvils = [];
 }
 
 function increaseObstacleSize() {

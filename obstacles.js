@@ -6,7 +6,7 @@ class Rocket {
         this.y = height;
         this.height = obstacles.size.height.rocketHeight;
         this.width = obstacles.size.width.rocketWidth;
-        this.img = loadImage("assets/Angry-Pittpull-01.png");
+        this.img = loadImage("assets/missile.png");
     }
     
     draw() {
@@ -43,11 +43,11 @@ class Anvil {
         this.x =  random(0.2 * width, width); // canvas width
         // this.y = height - 100;
         this.y = - this.height;
-        this.img = loadImage("assets/meteor.png");
+        this.img = loadImage("assets/meteor1.png");
+        this.img2 = loadImage("assets/meteor2.png");
     }
     
     draw() {
-
         image(this.img, this.x, this.y, this.width, this.height);
         this.y += obstacles.speed.yAxis.rocketY;
         this.x -= obstacles.speed.xAxis.rocketX;

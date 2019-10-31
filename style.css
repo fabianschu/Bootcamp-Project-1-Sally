@@ -12,7 +12,7 @@ html, body {
 }
 
 body {
-    background-image: url("assets/night-sky.jpg");
+    background-image: url("assets/html-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -37,10 +37,6 @@ h2 {
     align-content: center;
 }
 
-span {
-    color: red;
-}
-
 body {
  margin: 0;
  display: flex;
@@ -52,13 +48,13 @@ body {
 }
 
 button {
-    color: greenyellow;
+    color: rgb(245, 99, 66);
     font-family: stacked;
     font-size: 100px;
     background-color: transparent;
-    border: 1px solid greenyellow;
+    border: 1px solid rgb(245, 99, 66);
 }
 
-.latest-score {
-    color: red;
+.orange {
+    color: #f56342;
 }
