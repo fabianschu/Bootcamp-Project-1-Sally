@@ -10,7 +10,7 @@ let isObstaclesSupersized;
 
 function preload() {
     console.log("preload");
-    game.preload();
+    game.preload();//
 }
 
 function setup() {

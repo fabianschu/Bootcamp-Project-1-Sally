@@ -3,6 +3,7 @@ class Game {
         this.background = new Background();
         this.player = new Player();
         this.sounds = new Sounds();
+        
         //display elements
         this.display = new Display();
         
@@ -10,6 +11,18 @@ class Game {
         this.rockets = [];
         this.ufos = [];
         this.anvils = [];
+
+        //clouds
+        this.clouds1 = [];
+        this.clouds2 = [];
+        this.clouds3 = [];
+        this.clouds4 = [];
+        this.clouds5 = [];
+        this.clouds6 = [];
+        this.clouds7 = [];
+        this.clouds8 = [];
+        this.clouds9 = [];
+        this.clouds10 = [];
         
         //collectibles w positive effects
         this.slowMotions = [];
@@ -27,7 +40,6 @@ class Game {
         this.player.preload();
         this.sounds.preload(); //new
         this.display.preload();
-        
     }
 
     setup() {
@@ -37,9 +49,134 @@ class Game {
 
     draw() {
       this.background.draw();
-      this.player.draw();
+      //this.player.draw();
       this.display.scoreDraw();
 
+      /* ---------------------------------- Clouds ---------------------------------- */
+      
+      //cloud1
+      if (frameCount % clouds.frequency.cloud1Frequency == 0) {
+        this.clouds1.push(new Cloud1());
+      }
+      this.clouds1.forEach(
+        (cloud1, index) => {
+          cloud1.draw();
+          if (cloud1.x + cloud1.width <= 0) {
+            this.clouds1.splice(index, 1);
+          } 
+        }
+      );
+      //cloud2
+      if (frameCount == 100 || frameCount % clouds.frequency.cloud2Frequency == 0) {
+        this.clouds2.push(new Cloud2());
+      }
+      this.clouds2.forEach(
+        (cloud2, index) => {
+          cloud2.draw();
+          if (cloud2.x + cloud2.width <= 0) {
+            this.clouds2.splice(index, 1);
+          } 
+        }
+      );
+      //cloud3
+      if (frameCount % clouds.frequency.cloud3Frequency == 0) {
+        this.clouds3.push(new Cloud3());
+      }
+      this.clouds3.forEach(
+        (cloud3, index) => {
+          cloud3.draw();
+          if (cloud3.x + cloud3.width <= 0) {
+            this.clouds3.splice(index, 1);
+          } 
+        }
+      );
+      //cloud4
+      if (frameCount == 300 || frameCount % clouds.frequency.cloud4Frequency == 0) {
+        this.clouds4.push(new Cloud4());
+      }
+      this.clouds4.forEach(
+        (cloud4, index) => {
+          cloud4.draw();
+          if (cloud4.x + cloud4.width <= 0) {
+            this.clouds4.splice(index, 1);
+          } 
+        }
+      );
+      //cloud5
+      if (frameCount % clouds.frequency.cloud5Frequency == 0) {
+        this.clouds5.push(new Cloud5());
+      }
+      this.clouds5.forEach(
+        (cloud5, index) => {
+          cloud5.draw();
+          if (cloud5.x + cloud5.width <= 0) {
+            this.clouds5.splice(index, 1);
+          } 
+        }
+      );
+      //cloud6
+      if (frameCount == 500 || frameCount % clouds.frequency.cloud6Frequency == 0) {
+        this.clouds6.push(new Cloud6());
+      }
+      this.clouds6.forEach(
+        (cloud6, index) => {
+          cloud6.draw();
+          if (cloud6.x + cloud6.width <= 0) {
+            this.clouds6.splice(index, 1);
+          } 
+        }
+      );
+      //cloud7
+      if (frameCount % clouds.frequency.cloud7Frequency == 0) {
+        this.clouds7.push(new Cloud7());
+      }
+      this.clouds7.forEach(
+        (cloud7, index) => {
+          cloud7.draw();
+          if (cloud7.x + cloud7.width <= 0) {
+            this.clouds7.splice(index, 1);
+          } 
+        }
+      );
+      //cloud8
+      if (frameCount == 50 || frameCount % clouds.frequency.cloud8Frequency == 0) {
+        this.clouds8.push(new Cloud8());
+      }
+      this.clouds8.forEach(
+        (cloud8, index) => {
+          cloud8.draw();
+          if (cloud8.x + cloud8.width <= 0) {
+            this.clouds8.splice(index, 1);
+          } 
+        }
+      );
+      //cloud9
+      if (frameCount % clouds.frequency.cloud9Frequency == 0) {
+        this.clouds9.push(new Cloud9());
+      }
+      this.clouds9.forEach(
+        (cloud9, index) => {
+          cloud9.draw();
+          if (cloud9.x + cloud9.width <= 0) {
+            this.clouds9.splice(index, 1);
+          } 
+        }
+      );
+      //cloud10
+      if (frameCount == 0 || frameCount % clouds.frequency.cloud10Frequency == 0) {
+        console.log("cloud10");
+        this.clouds10.push(new Cloud10());
+      }
+      this.clouds10.forEach(
+        (cloud10, index) => {
+          cloud10.draw();
+          if (cloud10.x + cloud10.width <= 0) {
+            this.clouds10.splice(index, 1);
+          } 
+        }
+      );
+
+      this.player.draw();
       /* ---------------------------------- Obstacles ---------------------------------- */
 
       //rocket creation
@@ -54,7 +191,6 @@ class Game {
           
           
           if (rocket.x + rocket.width <= 0) {
-            //   remove obstacle
             this.rockets.splice(index, 1);
           }
           
@@ -81,7 +217,6 @@ class Game {
           ufo.draw();
           
           if (ufo.x + ufo.width <= 0) {
-            //   remove obstacle
             this.ufos.splice(index, 1);
           }
           
@@ -105,7 +240,6 @@ class Game {
       this.anvils.forEach((anvil, index) => {
         anvil.draw(); 
         if (anvil.x + anvil.width <= 0) {
-          //   remove obstacle
           this.anvils.splice(index, 1);
         }
         
@@ -144,7 +278,6 @@ class Game {
       }
 
       //makeSmall creation
-      /*
       if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
         this.makeSmalls.push(new MakeSmall());
       }
@@ -195,7 +328,7 @@ class Game {
           }
         }
       );
-      */
+      
       /* ---------------------------------- Increase Difficulty ---------------------------------- */
       if (frameCount % difficultyTime === 0) {
         console.log('speed')

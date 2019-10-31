@@ -7,6 +7,10 @@ function fastTime() {
   for (let xSpeed in xAxisBackground){
     xAxisBackground[xSpeed] *=  difficultyFactor;
   }
+  let xAxisClouds = clouds.speed
+  for (let xSpeed in xAxisClouds){
+    xAxisClouds[xSpeed] *=  difficultyFactor;
+  }
 }
 
 function slowTime() {
@@ -22,6 +26,16 @@ function slowTime() {
     yAxisObstacles[ySpeed] *=  collectibles.factor.slowTimeFactor;
   }
 
+  //new block
+  let xAxisBackground = background
+  for (let xSpeed in xAxisBackground){
+    xAxisBackground[xSpeed] *=  collectibles.factor.slowTimeFactor;
+  }
+  let xAxisClouds = clouds.speed
+  for (let xSpeed in xAxisClouds){
+    xAxisClouds[xSpeed] *=  collectibles.factor.slowTimeFactor;
+  }
+
   const intervalId = setInterval(function() {
       for (let xSpeed in xAxisObstacles){
           xAxisObstacles[xSpeed] /=  collectibles.factor.slowTimeFactor;
@@ -29,6 +43,16 @@ function slowTime() {
       for (let ySpeed in yAxisObstacles){
           yAxisObstacles[ySpeed] /=  collectibles.factor.slowTimeFactor;
       };
+      //new block
+      let xAxisBackground = background
+      for (let xSpeed in xAxisBackground){
+        xAxisBackground[xSpeed] *=  collectibles.factor.slowTimeFactor;
+      }
+      let xAxisClouds = clouds.speed
+      for (let xSpeed in xAxisClouds){
+        xAxisClouds[xSpeed] *=  collectibles.factor.slowTimeFactor;
+      }
+
       isSlowTime = false;
       clearInterval(intervalId);
   }, collectibles.duration.slowTimeDuration);

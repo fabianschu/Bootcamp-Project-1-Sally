@@ -25,10 +25,12 @@ class Ufo {
         this.x = width;
         this.height = obstacles.size.height.ufoHeight;
         this.width = obstacles.size.width.ufoWidth;
+        this.img = loadImage("assets/ufo.png");
+        //add alternative images
     }
 
     draw() {
-        rect(this.x, this.y, this.width, this.height);
+        image(this.img, this.x, this.y, this.width, this.height);
         this.x -= obstacles.speed.xAxis.ufoX;
     }
 }
@@ -41,17 +43,14 @@ class Anvil {
         this.x =  random(0.2 * width, width); // canvas width
         // this.y = height - 100;
         this.y = - this.height;
-        //this.img = loadImage("assets/Angry-Pittpull-01.png");
+        this.img = loadImage("assets/meteor.png");
     }
     
     draw() {
-        push();
-        fill("white");
-        rect(this.x, this.y, this.width, this.height);
-        //image(this.img, this.x, this.y, this.width, this.height);
+
+        image(this.img, this.x, this.y, this.width, this.height);
         this.y += obstacles.speed.yAxis.rocketY;
         this.x -= obstacles.speed.xAxis.rocketX;
-        pop();
     }   
 
 }
