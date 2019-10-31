@@ -144,6 +144,7 @@ class Game {
       }
 
       //makeSmall creation
+      /*
       if (frameCount > 50 && frameCount % collectibles.frequency.slowTimeFrequency == 0) {
         this.makeSmalls.push(new MakeSmall());
       }
@@ -157,6 +158,8 @@ class Game {
           }
         } 
       );
+      
+      
       
       if (isPlayerSmall === true) {
         this.display.effectCounter();
@@ -177,7 +180,8 @@ class Game {
         }
       );
 
-      //supersizeObstacles creation
+      //supersizeObstacles creation 
+      
       if (frameCount > 50 && frameCount % collectibles.frequency.supersizeObstaclesFrequency == 0) {
         this.supersizeObstacles.push(new SupersizeObstacles());
       }
@@ -191,7 +195,7 @@ class Game {
           }
         }
       );
-      
+      */
       /* ---------------------------------- Increase Difficulty ---------------------------------- */
       if (frameCount % difficultyTime === 0) {
         console.log('speed')

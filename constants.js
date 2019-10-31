@@ -35,7 +35,7 @@ let obstacles = {
     frequency: {
         rocketFrequency: 100,
         ufoFrequency: 100,
-        anvilFrequency: 300
+        anvilFrequency: 100
     },
     buffer: 1.1
 };
@@ -84,7 +84,7 @@ let collectibles = {
         }
     },
     frequency: {
-        slowTimeFrequency: 400,
+        slowTimeFrequency: 300,
         makeSmallFrequency: 400,
         removeObstaclesFrequency: 300,
         supersizeObstaclesFrequency: 300

@@ -36,11 +36,11 @@ class Ufo {
 class Anvil {
 
     constructor() {
-        this.x = random(0.2 * width, width); // canvas width
-        // this.y = height - 100;
-        this.y = - height;
         this.height = obstacles.size.height.anvilHeight;
         this.width = obstacles.size.width.anvilWidth;
+        this.x =  random(0.2 * width, width); // canvas width
+        // this.y = height - 100;
+        this.y = - this.height;
         //this.img = loadImage("assets/Angry-Pittpull-01.png");
     }
     
