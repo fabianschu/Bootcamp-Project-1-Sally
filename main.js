@@ -8,6 +8,7 @@ let effect;
 let isObstaclesSupersized;
 let isPlayerSpeedIncreased;
 let isObstaclesRemoved;
+let isTeckelchen;
 
 
 function preload() {

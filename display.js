@@ -55,12 +55,12 @@ class Display {
         textFont(font);
         pop();
     }
-    
-    effectCounter() {
+
+    puff() {
         push();
-        fill(52, 235, 107); 
+        fill(247, 207, 198); 
         textSize(40);
-        text(effect + ": " + displayText , 320, 50);
+        text("TECKEL?" , 10, 300);
         textFont(font);
         pop();
     }

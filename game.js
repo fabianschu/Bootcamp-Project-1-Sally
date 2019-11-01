@@ -365,6 +365,9 @@ class Game {
         this.display.supersized();
        }
 
+      if (frameCount % 1000 == 0) {
+        isTeckel();
+      }
       
       
       /* ---------------------------------- Increase Difficulty ---------------------------------- */

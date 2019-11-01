@@ -20,18 +20,14 @@ function increaseDifficulty() {
 
 function slowTime() {
   isSlowTime = true;
-  timerDisplay(collectibles.duration.slowTimeDuration, 'SLOW MOTION');
   let xAxisObstacles = obstacles.speed.xAxis
   for (let xSpeed in xAxisObstacles){
     xAxisObstacles[xSpeed] *=  collectibles.factor.slowTimeFactor;
   }
-
   let yAxisObstacles = obstacles.speed.yAxis
   for (let ySpeed in yAxisObstacles){
     yAxisObstacles[ySpeed] *=  collectibles.factor.slowTimeFactor;
   }
-
-  //new block
   let xAxisBackground = background
   for (let xSpeed in xAxisBackground){
     xAxisBackground[xSpeed] *=  collectibles.factor.slowTimeFactor;
@@ -48,7 +44,6 @@ function slowTime() {
       for (let ySpeed in yAxisObstacles){
           yAxisObstacles[ySpeed] /=  collectibles.factor.slowTimeFactor;
       };
-      //new block
       let xAxisBackground = background
       for (let xSpeed in xAxisBackground){
         xAxisBackground[xSpeed] *=  collectibles.factor.slowTimeFactor;
@@ -78,8 +73,6 @@ function timerDisplay(interval, input) {
 function makePlayerSmall() {
   isPlayerSmall = true;
 
-  timerDisplay(collectibles.duration.makeSmallDuration, 'TINY TECKEL TIME');
-  
   let playerSize = player;
   for (let size in playerSize){
     playerSize[size] *=  collectibles.factor.makeSmallFactor;
@@ -125,6 +118,15 @@ function removeAllObstacles() {
   game.rockets = [];
   game.anvils = [];
 }
+
+function isTeckel() {
+  isTeckelchen = true;
+  const intervalId = setInterval(function() {
+    isTeckelchen = false;
+    clearInterval(intervalId);
+  }, 1500);
+}
+
 
 function increaseObstacleSize() {
   isObstaclesSupersized = true;
