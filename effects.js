@@ -94,7 +94,33 @@ function makePlayerSmall() {
     }, collectibles.duration.makeSmallDuration);
 }
 
+function increasePlayerSpeed () {
+  isPlayerSpeedIncreased = true;
+  //add display function here
+  let verticalFactor = 1.5;
+  let mitigateSlownessFactor = 1;
+  if (isPlayerSmall) {
+    mitigateSlownessFactor = 0.7;
+  }
+  verticalSpeed *= collectibles.factor.speedBonusFactor * mitigateSlownessFactor * verticalFactor;
+  horizontalSpeed *= collectibles.factor.speedBonusFactor * mitigateSlownessFactor;
+  const intervalId = setInterval(function() {
+    verticalSpeed /= collectibles.factor.speedBonusFactor * mitigateSlownessFactor* verticalFactor;
+    horizontalSpeed *= collectibles.factor.speedBonusFactor * mitigateSlownessFactor;
+    isPlayerSpeedIncreased = false;
+    clearInterval(intervalId);
+  }, collectibles.duration.speedBonusDuration);
+}
+
 function removeAllObstacles() {
+  isObstaclesRemoved = true;
+  const intervalId = setInterval(function() {
+    verticalSpeed /= collectibles.factor.speedBonusFactor;
+    horizontalSpeed *= collectibles.factor.speedBonusFactor;
+    isObstaclesRemoved = false;
+    clearInterval(intervalId);
+  }, 1500);
+  
   game.ufos = [];
   game.rockets = [];
   game.anvils = [];
@@ -102,9 +128,8 @@ function removeAllObstacles() {
 
 function increaseObstacleSize() {
   isObstaclesSupersized = true;
-
-  //display stuff
   
+  /* this version increases the size of all obstacles
   let obstacleWidth = obstacles.size.width;
   for (let width in obstacleWidth){
     console.log("downsizing");
@@ -115,14 +140,19 @@ function increaseObstacleSize() {
     console.log("downsizing");
     obstacleHeight[height] *=  collectibles.factor.supersizeObstaclesFactor;
   }
-
+  */
+  obstacles.size.width.rocketWidth *= collectibles.factor.supersizeObstaclesFactor;
+  obstacles.size.height.rocketHeight *= collectibles.factor.supersizeObstaclesFactor;
   const intervalId = setInterval(function() {
-    for (let width in obstacleWidth){
+    
+    /*for (let width in obstacleWidth){
         obstacleWidth[width] /=  collectibles.factor.supersizeObstaclesFactor;
     };
     for (let height in obstacleHeight){
         obstacleHeight[height] /=  collectibles.factor.supersizeObstaclesFactor;
-    };
+    };*/
+    obstacles.size.width.rocketWidth /= collectibles.factor.supersizeObstaclesFactor;
+    obstacles.size.height.rocketHeight /= collectibles.factor.supersizeObstaclesFactor;
     isObstaclesSupersized = false;
     clearInterval(intervalId);
 }, collectibles.duration.supersizeObstaclesDuration);

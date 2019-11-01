@@ -16,7 +16,7 @@ let obstacles = {
             anvilWidth: 80
         },
         height: {
-            rocketHeight: 200, //factor 2.5
+            rocketHeight: 187, //factor 2.3
             ufoHeight: 70,
             anvilHeight: 100 //factor 1.5
         }
@@ -63,30 +63,35 @@ let collectibles = {
             slowTimeX: 3,
             makeSmallX: 4,
             removeObstaclesX: 2,
-            supersizeObstaclesX: 0
+            supersizeObstaclesX: 0,
+            speedBonusX: 0
         },
         yAxis: {
             slowTimeY: 0,
             makeSmallY: 0,
             removeObstaclesY: 4,
-            supersizeObstaclesY: 3
+            supersizeObstaclesY: 3,
+            speedBonusY: 3
         }
     },
     frequency: {
-        slowTimeFrequency: 1300,
-        makeSmallFrequency: 700,
-        removeObstaclesFrequency: 300,
-        supersizeObstaclesFrequency: 900
+        slowTimeFrequency: 0,//1300,
+        makeSmallFrequency: secondsToFrames(10),
+        removeObstaclesFrequency: secondsToFrames(7),
+        supersizeObstaclesFrequency: secondsToFrames(7),
+        speedBonusFrequency: secondsToFrames(11)
     },
     duration: {
         slowTimeDuration: 5000,
         makeSmallDuration: 7000,
-        supersizeObstaclesDuration: 5000
+        supersizeObstaclesDuration: 4000,
+        speedBonusDuration: 8000
     },
     factor: {
         slowTimeFactor: 0.5,
         makeSmallFactor: 0.5,
-        supersizeObstaclesFactor: 1.5
+        supersizeObstaclesFactor: 2,
+        speedBonusFactor: 1.4
     }
 }
 

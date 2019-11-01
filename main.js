@@ -6,6 +6,8 @@ let isPlayerSmall;
 let displayText;
 let effect;
 let isObstaclesSupersized;
+let isPlayerSpeedIncreased;
+let isObstaclesRemoved;
 
 
 function preload() {

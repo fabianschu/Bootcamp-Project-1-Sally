@@ -52,28 +52,28 @@ class Player {
     move() {
         //move up
         if (keyIsDown(38)) {
-            if (this.y > 0) {
+            if (this.y > 0 - 0.25 * this.height) {
             this.y -= verticalSpeed;
             }
         }
 
         //move down
         if (keyIsDown(40)) {
-            if (this.y < HEIGHT - this.height) {
+            if (this.y < HEIGHT - 0.75 * this.height) {
             this.y += verticalSpeed;
             }
         }
 
         //move left
         if (keyIsDown(37)) {
-            if (this.x > 0) {
+            if (this.x > - 0.25 * this.width) {
             this.x -= horizontalSpeed;
             }
         }
 
         //move right
         if (keyIsDown(39)) {
-            if (this.x < WIDTH - this.width) {
+            if (this.x < WIDTH - 0.75 * this.width) {
             this.x += horizontalSpeed;
             }
         }

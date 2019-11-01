@@ -28,6 +28,7 @@ class Game {
         this.slowMotions = [];
         this.makeSmalls = [];
         this.removeObstacles = [];
+        this.playerSpeedUps = [];
 
         //collectibles w negative effects
         this.supersizeObstacles = [];
@@ -269,7 +270,7 @@ class Game {
           
           slowMotion.draw();
           
-          if (this.isCollision(slowMotion, this.player)) {
+          if (this.isStrictCollision(slowMotion, this.player)) {
             this.sounds.makeBing();
             slowTime(); //do something fancy (effects)
             this.slowMotions.splice(index, 1);
@@ -289,7 +290,7 @@ class Game {
       this.makeSmalls.forEach(
         (makeSmall, index) => {
           makeSmall.draw();
-          if (this.isCollision(makeSmall, this.player)) {
+          if (this.isStrictCollision(makeSmall, this.player)) {
             this.sounds.makeBing();
             makePlayerSmall();
             this.makeSmalls.splice(index, 1);
@@ -297,27 +298,51 @@ class Game {
         } 
       );
       
-      
-      
       if (isPlayerSmall === true) {
-        this.display.effectCounter();
+        this.display.smaller();
+        //this.display.effectCounter();
+      }
+
+      //playerSpeedUp creation
+      if (frameCount > 50 && frameCount % collectibles.frequency.speedBonusFrequency == 0) {
+        this.playerSpeedUps.push(new SpeedUp());
+      }
+
+      this.playerSpeedUps.forEach(
+        (playerSpeedUp, index) => {
+          playerSpeedUp.draw();
+          if (this.isStrictCollision(playerSpeedUp, this.player)) {
+            this.sounds.makeBing();
+            increasePlayerSpeed();
+            this.playerSpeedUps.splice(index, 1);
+          }
+        } 
+      );
+      
+      if (isPlayerSpeedIncreased === true) {
+       this.display.faster();
       }
 
       //removeObstacles creation
-      if (frameCount > 50 && frameCount % collectibles.frequency.removeObstaclesFrequency == 0) {
+      if (frameCount > 50 && (frameCount + 350) % collectibles.frequency.removeObstaclesFrequency == 0) {
+        console.log("puff");
         this.removeObstacles.push(new RemoveObstacles());
       }
 
       this.removeObstacles.forEach(
         (removeObstacle, index) => {
           removeObstacle.draw();
-          if (this.isCollision(removeObstacle, this.player)) {
+          if (this.isStrictCollision(removeObstacle, this.player)) {
             this.sounds.makeBing();
             removeAllObstacles();
             this.removeObstacles.splice(index, 1);
           }
         }
       );
+      
+      if (isObstaclesRemoved === true) {
+        this.display.puff();
+      }
       
       //supersizeObstacles creation 
       
@@ -328,13 +353,19 @@ class Game {
       this.supersizeObstacles.forEach(
         (supersizeObstacle, index) => {
           supersizeObstacle.draw();
-          if (this.isCollision(supersizeObstacle, this.player)) {
+          if (this.isStrictCollision(supersizeObstacle, this.player)) {
             this.sounds.makeBing();
             increaseObstacleSize();
             this.supersizeObstacles.splice(index, 1);
           }
         }
       );
+
+      if (isObstaclesSupersized === true) {
+        this.display.supersized();
+       }
+
+      
       
       /* ---------------------------------- Increase Difficulty ---------------------------------- */
       if (frameCount % difficultyTime === 0) {
@@ -355,4 +386,17 @@ class Game {
       }
       return true;
     }
+
+    isStrictCollision(rocket, player) {
+      //x-axis collisions
+      if (player.x + player.width < rocket.x || rocket.x + rocket.width < player.x) {
+        return false;
+      }
+      //y-axis collisions
+      if (player.y > rocket.y + rocket.height || rocket.y > player.y + player.height) {
+        return false;
+      }
+      return true;
+    }
+
   }

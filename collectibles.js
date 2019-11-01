@@ -21,7 +21,7 @@ class MakeSmall {
         this.x = width;
         this.height = 50;
         this.width = 50;
-        this.img = loadImage("assets/diamond.png");
+        this.img = loadImage("assets/diamond-green.png");
     }
 
     draw() {
@@ -30,6 +30,7 @@ class MakeSmall {
     }
 }
 
+
 class RemoveObstacles {
 
     constructor() {
@@ -37,12 +38,28 @@ class RemoveObstacles {
         this.x = random(0, width);
         this.height = 50;
         this.width = 50;
-        this.img = loadImage("assets/diamond.png");
+        this.img = loadImage("assets/diamond-weird.png");
     }
 
     draw() {
         image(this.img, this.x, this.y, this.width, this.height);
         this.y += collectibles.speed.yAxis.removeObstaclesY;
+    }
+}
+
+class SpeedUp {
+
+    constructor() {
+        this.y = - width;
+        this.x = random(0, width);
+        this.height = 50;
+        this.width = 50;
+        this.img = loadImage("assets/diamond-blue.png");
+    }
+
+    draw() {
+        image(this.img, this.x, this.y, this.width, this.height);
+        this.y += collectibles.speed.yAxis.speedBonusY;
     }
 }
 
@@ -53,7 +70,7 @@ class SupersizeObstacles {
         this.x = random(0, width);
         this.height = 50;
         this.width = 50;
-        this.img = loadImage("assets/diamond.png");
+        this.img = loadImage("assets/diamond-yellow.png");
     }
 
     draw() {

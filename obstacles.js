@@ -1,12 +1,12 @@
 class Rocket {
 
     constructor() {
-        this.x = random(0.2 * width, width); // canvas width
+        this.x = random(0.2 * width, 1.5 * width); // canvas width
         // this.y = height - 100;
         this.y = height;
         this.height = obstacles.size.height.rocketHeight;
         this.width = obstacles.size.width.rocketWidth;
-        this.img = loadImage("assets/missile.png");
+        this.img = loadImage("assets/missileusa.png");
     }
     
     draw() {
@@ -40,7 +40,7 @@ class Anvil {
     constructor() {
         this.height = obstacles.size.height.anvilHeight;
         this.width = obstacles.size.width.anvilWidth;
-        this.x =  random(0.2 * width, width); // canvas width
+        this.x =  random(0.2 * width, 1.5 * width); // canvas width
         // this.y = height - 100;
         this.y = - this.height;
         this.img = loadImage("assets/meteor1.png");
