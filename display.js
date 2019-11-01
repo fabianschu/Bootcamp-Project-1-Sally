@@ -56,7 +56,7 @@ class Display {
         pop();
     }
 
-    puff() {
+    teckel() {
         push();
         fill(247, 207, 198); 
         textSize(40);

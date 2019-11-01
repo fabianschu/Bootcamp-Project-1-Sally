@@ -368,6 +368,10 @@ class Game {
       if (frameCount % 1000 == 0) {
         isTeckel();
       }
+
+      if (isTeckelchen == true) {
+        this.display.teckel;
+      }
       
       
       /* ---------------------------------- Increase Difficulty ---------------------------------- */
